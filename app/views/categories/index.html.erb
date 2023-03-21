@@ -1,0 +1,34 @@
+
+<%= link_to 'Add a Category', new_category_path %>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @categories.each do |category| %>
+            <tr>
+                <td><%= category.id %></td>
+                <td><%= category.name %></td>
+                <td><%= link_to 'Edit', edit_category_path(category) %></td>
+                <td><%= link_to 'Show', category_path(category) %></td>
+                <td><%= link_to 'Add Task', new_category_task_path(category) %> </td>
+                <td>
+                    <table>
+                        <tbody>
+                            <% category.tasks.each do |task| %>
+                                <tr>
+                                    <td><%= task.task %></td>
+                                    <td><%= task.quadrant %></td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

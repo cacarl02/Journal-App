@@ -1,0 +1,11 @@
+<%= form_with model: @category, local: true do |f| %>
+
+    <p>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </p>
+    <p>
+        <%= f.submit 'Add' %>
+    </p>
+    <%= link_to 'Return to Index', categories_path %>
+<% end %>

@@ -1,0 +1,14 @@
+<%= form_with model: [@category, @task], local: true do |f| %>
+    <p>
+        <%= f.label :task %>
+        <%= f.text_field :task %>
+    </p>
+    <p>
+    <%= f.label :quadrant %>
+    <%= f.text_field :quadrant %>
+</p>
+    <p>
+        <%= f.submit 'Add' %>
+    </p>
+    <%= link_to 'Return to Index', categories_path %>
+<% end %>
