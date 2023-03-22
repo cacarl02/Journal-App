@@ -1,11 +1,20 @@
 <%= form_with model: @category, local: true do |f| %>
-
-<p>
-    <%= f.label :name %>
-    <%= f.text_field :name, placeholder: "Category Name" %>
-</p>
-<p>
-    <%= f.submit 'Update' %>
-</p>
+    
+    <p>
+        <%= f.label :name %>
+        <%= f.text_field :name, placeholder: "Category Name" %>
+    </p>
+    <p>
+        <% if @category.errors.any? %>
+            <ul>
+                <% @category.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        <% end %>
+    </p>
+    <p>
+        <%= f.submit 'Update' %>
+    </p>
+    <%= link_to 'Return to Index', categories_path %>
 <% end %>
-<%= link_to 'Return to Index', categories_path %>

@@ -23,6 +23,8 @@
                                 <tr>
                                     <td><%= task.task %></td>
                                     <td><%= task.quadrant %></td>
+                                    <td><%= link_to 'Edit Task', edit_category_task_path(category.id, task) %></td>
+                                    <td><%= button_to 'Delete Task', category_task_path(category.id,task), method: :delete %></td>
                                 </tr>
                             <% end %>
                         </tbody>

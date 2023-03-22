@@ -2,7 +2,16 @@
 
     <p>
         <%= f.label :name %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, placeholder: "Category Name" %>
+    </p>
+    <p>
+        <% if @category.errors.any? %>
+            <ul>
+                <% @category.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        <% end %>
     </p>
     <p>
         <%= f.submit 'Add' %>
