@@ -1,15 +1,18 @@
 class AuthController < ApplicationController
     
     def signin
-        @user = User.new
     end
-
+    
     def signup
-
-    end
-
-    def new_session
         
+    end
+    
+    def new_session
+        if user = User.signin(user_params)
+            render json: { token: user.token }, status: 200
+        else
+            render json: { not_found: true }, status: 403 
+        end    
     end
 
     def new_account
@@ -23,7 +26,8 @@ class AuthController < ApplicationController
     end
 
     def logout
-
+        current_user.token = ""
+        current_user.save
     end
 
     private
@@ -34,5 +38,9 @@ class AuthController < ApplicationController
 
     def signup_params
         params.permit(:name, :email, :password, :password_confirmation)
+    end
+
+    def signin_params
+        params.require(:user).permit(:email, :password)
     end
 end
