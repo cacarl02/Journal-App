@@ -1,30 +1,34 @@
-
-<%= link_to 'Add a Category', new_category_path %>
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Category</th>
-            <th>Actions</th>
+<div class="w-full relative overflow-x-auto flex flex-col items-center">
+<%= button_to 'Logout', auth_logout_path, method: :delete, class: "bg-blue-500 hover:bg-blue-600 text-white focus:outline-none rounded-lg font-medium text-center px-5 py-2.5" %><br>
+<%= link_to 'Add a Category', new_category_path, class: "bg-blue-500 hover:bg-blue-600 text-white focus:outline-none rounded-lg font-medium text-center px-5 py-2.5" %>
+<table class="w-1/2 text-sm text-center text-gray-500 mt-2">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
+            <th scope="col" class="px-6 py-3">ID</th>
+            <th scope="col" class="px-6 py-3">Category</th>
+            <th scope="col" class="px-6 py-3">Actions</th>
+            <th scope="col" class="px-6 py-3">Tasks</th>
         </tr>
     </thead>
     <tbody>
         <% @categories.each do |category| %>
-            <tr>
-                <td><%= category.id %></td>
-                <td><%= category.name %></td>
-                <td><%= link_to 'Edit', edit_category_path(category) %></td>
-                <td><%= link_to 'Show', category_path(category) %></td>
-                <td><%= link_to 'Add Task', new_category_task_path(category) %> </td>
+            <tr class="dark:bg-gray-200 text-gray-900">
+                <td class="px-4 py-2"><%= category.id %></td>
+                <td class="px-4 py-2"><%= category.name %></td>
+                <td>
+                <%= link_to 'Edit', edit_category_path(category), class: "bg-blue-500 hover:bg-blue-600 text-white focus:outline-none rounded-lg font-medium text-center px-2 py-1" %>
+                <%= link_to 'Show', category_path(category),  class: "bg-blue-500 hover:bg-blue-600 text-white focus:outline-none rounded-lg font-medium text-center px-2 py-1" %>
+                <%= link_to 'Add Task', new_category_task_path(category),  class: "bg-blue-500 hover:bg-blue-600 text-white focus:outline-none rounded-lg font-medium text-center px-2 py-1" %> </td>
                 <td>
                     <table>
                         <tbody>
                             <% category.tasks.each do |task| %>
-                                <tr>
+                                <tr class="dark:bg-gray-200 text-gray-900">
                                     <td><%= task.task %></td>
                                     <td><%= task.quadrant %></td>
-                                    <td><%= link_to 'Edit Task', edit_category_task_path(category.id, task) %></td>
-                                    <td><%= button_to 'Delete Task', category_task_path(category.id,task), method: :delete %></td>
+                                    <td>
+                                    <%= link_to 'Edit Task', edit_category_task_path(category.id, task), class: "bg-blue-500 hover:bg-blue-600 text-white focus:outline-none rounded-lg font-medium text-center px-2 py-1" %>
+                                    <%= button_to 'Delete Task', category_task_path(category.id,task), method: :delete, class: "bg-blue-500 hover:bg-blue-600 text-white focus:outline-none rounded-lg font-medium text-center px-2 py-1" %></td>
                                 </tr>
                             <% end %>
                         </tbody>
@@ -34,3 +38,4 @@
         <% end %>
     </tbody>
 </table>
+</div>

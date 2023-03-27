@@ -1,10 +1,15 @@
-<%= form_with scope: :user, url: signin_path, local: true do |f| %>
-    <%= f.label "Email" %>
-    <%= f.text_field :email %>
-    <%= f.label "Password" %>
-    <%= f.password_field :password %>
-    <%= f.submit 'Login' %>
+<%= form_with class: "bg-gray-200 w-1/4 flex flex-col justify-center p-6", scope: :user, url: signin_path, local: true do |f| %>
+    <h1 class="p-4 text-2xl text-center">My Journal App</h1>
+    <p>
+        <%= f.label "Email" %><br>
+        <%= f.text_field :email, class: "block w-full p-2 text-gray-900 border border-gray-300" %>
+    </p>
+    <p>
+        <%= f.label "Password" %><br>
+        <%= f.password_field :password, class: "block w-full p-2 text-gray-900 border border-gray-300" %>
+    </p>
+    <%= f.submit 'Login', class: "cursor-pointer mt-2 w-full text-center py-3 rounded bg-green-500 hover:bg-green-600 text-gray-800 hover:bg-green-dark focus:outline-none" %>
     <br>
     <span>Not registered yet?</span>
-    <%= link_to 'Signup Now!', signup_path %>
+    <%= link_to 'Signup Now!', signup_path, class: "bg-blue-500 hover:bg-blue-600 text-white focus:outline-none rounded-lg font-medium text-center px-5 py-2.5"  %>
 <% end %>

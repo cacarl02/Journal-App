@@ -18,7 +18,6 @@ class AuthController < ApplicationController
     def new_account
         if (signup_params[:password] == signup_params[:password_confirmation])
             @user = User.signup(user_params)
-
             redirect_to signin_path
         else
             render :signup, status: :unprocessable_entity
@@ -28,6 +27,7 @@ class AuthController < ApplicationController
     def logout
         current_user.token = ""
         current_user.save
+        redirect_to signin_path
     end
 
     private

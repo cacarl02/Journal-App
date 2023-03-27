@@ -14,7 +14,7 @@ class User < ApplicationRecord
         user = find_by(email: user_params[:email])
 
         if user.present?
-            return user if valid_password = Password.new(user.password) == user_params[:password]
+            return user if Password.new(user.password) == user_params[:password]
         end
     end
 

@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   get '/signup' => 'auth#signup'
   post 'signin' => 'auth#new_session'
   post '/signup' => 'auth#new_account'
-  delete '/logout' => 'auth#logout'
+  delete '/logout' => 'auth#logout', as: 'auth_logout'
 end
