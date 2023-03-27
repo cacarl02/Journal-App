@@ -9,7 +9,8 @@ class AuthController < ApplicationController
     
     def new_session
         if user = User.signin(user_params)
-            render json: { token: user.token }, status: 200
+            
+            redirect_to categories_path
         else
             render json: { not_found: true }, status: 403 
         end    
@@ -25,8 +26,6 @@ class AuthController < ApplicationController
     end
 
     def logout
-        current_user.token = ""
-        current_user.save
         redirect_to signin_path
     end
 
