@@ -1,3 +1,4 @@
+<div class="w-full relative overflow-x-auto flex flex-col items-center">
 <%= form_with class: "bg-gray-200 w-1/4 flex flex-col justify-center p-6", scope: :user, url: signin_path, local: true do |f| %>
     <h1 class="p-4 text-2xl text-center">My Journal App</h1>
     <p>
@@ -13,3 +14,4 @@
     <span>Not registered yet?</span>
     <%= link_to 'Signup Now!', signup_path, class: "bg-blue-500 hover:bg-blue-600 text-white focus:outline-none rounded-lg font-medium text-center px-5 py-2.5"  %>
 <% end %>
+</div>
