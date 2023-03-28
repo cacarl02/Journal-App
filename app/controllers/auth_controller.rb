@@ -9,7 +9,7 @@ class AuthController < ApplicationController
     
     def new_session
         if user = User.signin(user_params)
-            
+            session[:user_id] = user.id
             redirect_to categories_path
         else
             render json: { not_found: true }, status: 403 
@@ -26,6 +26,7 @@ class AuthController < ApplicationController
     end
 
     def logout
+        session[:user_id] = nil
         redirect_to signin_path
     end
 

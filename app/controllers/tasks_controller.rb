@@ -6,6 +6,7 @@ class TasksController < ApplicationController
     end
 
     def show
+        @tasks = @category.tasks.find_by(quadrant: params[:quadrant])
     end
 
     def new

@@ -1,6 +1,9 @@
 class CategoriesController < ApplicationController
     before_action :authenticate_user
     def index
+        if session[:user_id]
+            @user = User.find_by(id: session[:user_id])
+        end
         @categories = Category.all
     end
     
@@ -13,8 +16,11 @@ class CategoriesController < ApplicationController
     end
 
     def create
+        if session[:user_id]
+            @user = User.find_by(id: session[:user_id])
+        end
         @category = Category.new(category_params)
-        @category.user_id = current_user.id
+        @category.user_id = @user.id
 
         if @category.save
             redirect_to categories_path

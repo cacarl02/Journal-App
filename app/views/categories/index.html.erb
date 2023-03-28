@@ -1,4 +1,7 @@
 <div class="w-full relative overflow-x-auto flex flex-col items-center">
+<% if @user %>
+    Hello, <%= @user.name %>
+<% end %>
 <%= button_to 'Logout', auth_logout_path, method: :delete, class: "bg-blue-500 hover:bg-blue-600 text-white focus:outline-none rounded-lg font-medium text-center px-5 py-2.5" %><br>
 <%= link_to 'Add a Category', new_category_path, class: "bg-blue-500 hover:bg-blue-600 text-white focus:outline-none rounded-lg font-medium text-center px-5 py-2.5" %>
 <table class="w-1/2 text-sm text-center text-gray-500 mt-2">
