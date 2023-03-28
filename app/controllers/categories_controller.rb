@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
         if session[:user_id]
             @user = User.find_by(id: session[:user_id])
         end
-        @categories = Category.all
+        @categories = Category.where(user_id: session[:user_id])
     end
     
     def new
